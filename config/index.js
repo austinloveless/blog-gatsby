@@ -12,7 +12,7 @@ module.exports = {
   siteDescription:
     "Austin Codes with a focus on typography. Gatsby Starter powered by MDX.", // Your site description
   author: "Austin", // Author for schemaORGJSONLD
-  siteLogo: "/social/ALLogo.jpeg", // Image for schemaORGJSONLD
+  siteLogo: "/social/avatar.jpeg", // Image for schemaORGJSONLD
 
   // siteFBAppID: '123456789', // Facebook App ID - Optional
   ogSiteName: "austin", // Facebook Site Name - Optional
