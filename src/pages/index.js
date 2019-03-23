@@ -8,6 +8,7 @@ import { Layout, Article, Wrapper, Button, SectionTitle } from "../components";
 const Content = styled.div`
   grid-column: 2;
   box-shadow: 0 4px 120px rgba(0, 0, 0, 0.1);
+  background-color: white;
   border-radius: 1rem;
   padding: 3rem 6rem;
   @media (max-width: ${props => props.theme.breakpoints.tablet}) {
@@ -17,6 +18,7 @@ const Content = styled.div`
     padding: 2rem 1.5rem;
   }
   overflow: hidden;
+  margin-bottom: 100px;
 `;
 
 const Hero = styled.div`
@@ -51,19 +53,12 @@ const IndexPage = ({
       <Hero>
         <div style={cStyle}>
           <h1 style={cStyle}>Welcome!</h1>
-          <p>
-            I&apos;m Austin Loveless, a Full Stack Developer and Cloud
-            Architect. Writing blogs about my code and more!
-          </p>
-          <br />
-          <p>
-            <strong>Note</strong>: These are place holder blogs, real content
-            coming soon!
-          </p>
         </div>
       </Hero>
       <Content>
-        <SectionTitle>Latest stories</SectionTitle>
+        <SectionTitle>
+          <h4>AWS Blogs</h4>
+        </SectionTitle>
         {postEdges.map(post => (
           <Article
             title={post.node.frontmatter.title}
@@ -76,25 +71,6 @@ const IndexPage = ({
           />
         ))}
       </Content>
-      <Hero>
-        <div style={cStyle}>
-          <h1>Stay In Touch with me!</h1>
-
-          <Link to="/contact">
-            <Button big>
-              <svg
-                width="1792"
-                height="1792"
-                viewBox="0 0 1792 1792"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M1764 11q33 24 27 64l-256 1536q-5 29-32 45-14 8-31 8-11 0-24-5l-453-185-242 295q-18 23-49 23-13 0-22-4-19-7-30.5-23.5t-11.5-36.5v-349l864-1059-1069 925-395-162q-37-14-40-55-2-40 32-59l1664-960q15-9 32-9 20 0 36 11z" />
-              </svg>
-              Contact
-            </Button>
-          </Link>
-        </div>
-      </Hero>
     </Wrapper>
   </Layout>
 );

@@ -1,74 +1,36 @@
 ---
-date: "2018-01-05"
-title: "React-Live & Code example"
+date: "2019-03-23"
+title: "Creating a Dynamo Table"
 categories:
-  - Coding
-  - Help
+  - DynamoDB
 ---
 
-Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel Quax zwickt Johnys Pferd Bim. Sylvia wagt quick den Jux bei Pforzheim. Polyfon zwitschernd aßen Mäxchens Vögel Rüben, Joghurt und Quark. "Fix, Schwyz! " quäkt Jürgen blöd vom Paß. Victor jagt zwölf Boxkämpfer quer über den großen Sylter Deich. Falsches Üben von Xylophonmusik quält jeden größeren Zwerg. Heizölrückstoßabdämpfung. Zwei flinke Boxer jagen die quirlige Eva und ihren Mops durch Sylt. Franz jagt im komplett verwahrlosten Taxi quer durch Bayern. Zwölf Boxkämpfer jagen Viktor quer über den großen Sylter Deich. Vogel Quax zwickt Johnys Pferd Bim.
+[Amazon DynamoDB](https://aws.amazon.com/dynamodb/) is a fully managed NoSQL database that provides fast and predictable performance with seamless scalability. Similar to other databases, DynamoDB stores data in tables. Each table contains multiple items, and each item is composed of one or more attributes. We are going to cover some basics in the following chapters. But to get a better feel for it, here is a great guide on [DynamoDB](https://www.dynamodbguide.com/).
 
-### A live code sample:
+### Create Table
 
-```js react-live
-const onClick = () => {
-  alert("You opened me");
-};
-render(<button onClick={onClick}>Alohomora!</button>);
-```
+First, log in to your [AWS Console](https://aws.amazon.com/) and select **DynamoDB** from the list of services.
 
-### Just code
+Next, Select **Create table**.
 
-```js
-(function() {
+![dynamodb create table dashboard](https://s3.amazonaws.com/aws-meetup-images/DynamoDB/Screen+Shot+2019-03-23+at+4.04.16+PM.png)
 
-var cache = {};
-var form = $('form');
-var minified = true;
+Enter the **Table name** and **Primary key** info as shown below. Just make sure that **todoId** is in camel case.
+Make sure **Use default settings** is checked.
 
-var dependencies = {};
+Note that the default setting provisions 5 reads and 5 writes. When you create a table, you specify how much provisioned throughput capacity you want to reserve for reads and writes. DynamoDB will reserve the necessary resources to meet your throughput needs while ensuring consistent, low-latency performance. One read capacity unit can read up to 8 KB per second and one write capacity unit can write up to 1 KB per second. You can change your provisioned throughput settings, increasing or decreasing capacity as needed.
 
-var treeURL = 'https://api.github.com/repos/PrismJS/prism/git/trees/gh-pages?recursive=1';
-var treePromise = new Promise(function(resolve) {
-	$u.xhr({
-		url: treeURL,
-		callback: function(xhr) {
-			if (xhr.status < 400) {
-				resolve(JSON.parse(xhr.responseText).tree);
-			}
-		}
-	});
-});
-```
+After everything is entered properly select **create**.
 
-Text between those lines
+![table name](https://s3.amazonaws.com/aws-meetup-images/DynamoDB/Screen+Shot+2019-03-23+at+4.05.52+PM.png)
 
-```md
-# asdfasdfads
+Each DynamoDB table has a primary key, which cannot be changed once set. The primary key uniquely identifies each item in the table, so that no two items can have the same key. DynamoDB supports two different kinds of primary keys:
 
-- auesufuaus
-```
+- Partition key
+- Partition key and sort key
 
-```css
-code[class*="language-"],
-pre[class*="language-"] {
-  color: black;
-  background: none;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  text-align: left;
-  white-space: pre;
-  word-spacing: normal;
-  word-break: normal;
-  word-wrap: normal;
-  line-height: 1.5;
+To further your understanding of how indexes work in DynamoDB, you can read more here: [DynamoDB Core Components](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html).
 
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
+![table made](https://s3.amazonaws.com/aws-meetup-images/DynamoDB/Screen+Shot+2019-03-23+at+4.06.43+PM.png)
 
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-}
-```
+The **todos** table has now been created. If you find yourself stuck with the **Table is being created message**; refresh the page manually.

@@ -132,6 +132,8 @@ const GlobalStyle = createGlobalStyle`
   }
   img {
     vertical-align: middle;
+    width:100%;
+    border: 2px solid black
   }
   [role='button'] {
     cursor: pointer;
@@ -215,13 +217,6 @@ const Layout = ({ children, customSEO }) => (
           {!customSEO && <SEO buildTime={data.site.buildTime} />}
           <GlobalStyle />
           {children}
-          <Footer>
-            © 2019 Powered by Gatsby.js & React.js
-            <br />
-            <a target="_blank" href="https://github.com/austinloveless">
-              GitHub
-            </a>{" "}
-          </Footer>
         </React.Fragment>
       </ThemeProvider>
     )}

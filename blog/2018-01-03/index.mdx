@@ -1,17 +1,60 @@
 ---
-date: "2018-01-03"
-title: "Use component in MDX"
+date: "2019-03-23"
+title: "Creating an AWS IAM User"
 categories:
-  - Coding
+  - IAM
 ---
 
-import SpotifyPlayer from "../../src/components/SpotifyPlayer";
+Amazon IAM (Identity and Access Management) enables you to manage users and user permissions in AWS. You can create one or more IAM users in your AWS account. You might create an IAM user for someone who needs access to your AWS console, or when you have a new application that needs to make API calls to AWS. This is to add an extra layer of security to your AWS account.
 
-This is an example how you can use React components with MDX.
+We are going to create an IAM User.
 
-<SpotifyPlayer
-  uri="spotify:user:bbcamerica:playlist:3w18u69NplCpXVG4fQG726"
-  size="large"
-  theme="black"
-  view="list"
-/>
+### Creating a User
+
+First, log in to your [AWS Console](https://aws.amazon.com/) and select IAM from the list of services.
+
+Next select **Users**
+
+![iam-dashboard](https://s3.amazonaws.com/aws-meetup-images/IAM/Screen+Shot+2019-03-23+at+1.46.36+PM.png)
+
+Select **Add User**
+
+![Add User](https://s3.amazonaws.com/aws-meetup-images/IAM/Screen+Shot+2019-03-23+at+1.46.52+PM.png)
+
+Enter a **User Name** and check **Programmatic access**, then select Next: **Permissions**.
+
+This account can be used by your [AWS CLI](https://aws.amazon.com/cli/), the [Serverless Framework](https://serverless.com/), and [AWS SAM](https://aws.amazon.com/serverless/sam/). They’ll be connecting to the AWS API directly and will not be using the Management Console.
+
+![Username](https://s3.amazonaws.com/aws-meetup-images/IAM/Screen+Shot+2019-03-23+at+1.47.05+PM.png)
+
+Select **Attach existing policies directly**.
+
+![policy](https://s3.amazonaws.com/aws-meetup-images/IAM/Screen+Shot+2019-03-23+at+1.47.17+PM.png)
+
+Search for **AdministratorAccess** and select the policy, then select **Next: Review**.
+You can provide a more granular policy here, but for now we will give the user full Administrator Access.
+This will give this user full control of the account.
+
+![Review page](https://s3.amazonaws.com/aws-meetup-images/IAM/Screen+Shot+2019-03-23+at+1.47.30+PM.png)
+
+Select **Create user**.
+
+![create page](https://s3.amazonaws.com/aws-meetup-images/IAM/Screen+Shot+2019-03-23+at+1.47.43+PM.png)
+
+Select **Show** to reveal **Secret Access Key**.
+Thes will be used to log into your account through your terminal.
+
+![access key page](https://s3.amazonaws.com/aws-meetup-images/IAM/Screen+Shot+2019-03-23+at+1.51.02+PM.png)
+
+Copy these into your clip board or take note of them. You are going to need these for the AWS CLI or Serverless Framework.
+![show page](https://s3.amazonaws.com/aws-meetup-images/IAM/Screen+Shot+2019-03-23+at+1.51.14+PM.png)
+
+Finally when using the [AWS-CLI](https://aws.amazon.com/cli/) you will want to run
+
+```js
+aws configure
+```
+
+Paste in your **Access Key ID** and **Secret Access Key** and for the **Default region name** I use **us-east-1** which is Northern Virginia, because that region typically receives updates first. Lastly you can leave the **Default output format** as is and hit enter!
+
+![aws configure](https://s3.amazonaws.com/aws-meetup-images/IAM/Screen+Shot+2019-03-23+at+3.09.29+PM.png)

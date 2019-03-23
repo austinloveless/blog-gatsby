@@ -73,73 +73,7 @@ class Contact extends Component {
     }
   };
   render() {
-    return (
-      <Layout>
-        <Wrapper>
-          <Helmet title={`Contact | ${config.siteTitle}`} />
-          <Header>
-            <Link to="/">{config.siteTitle}</Link>
-          </Header>
-          <Content>
-            <h1>Contact</h1>
-            <form
-              onSubmit={this.handleSubmit}
-              name="contact-form"
-              action="/success"
-            >
-              <p>
-                <label htmlFor="contact-name">
-                  Name
-                  <input
-                    name="name"
-                    id="contact-name"
-                    type="text"
-                    required
-                    onChange={this.onInputChange}
-                  />
-                </label>
-              </p>
-              <p>
-                <label htmlFor="contact-email">
-                  E-Mail{" "}
-                  <input
-                    name="email"
-                    id="contact-email"
-                    type="email"
-                    required
-                    onChange={this.onInputChange}
-                  />
-                </label>
-              </p>
-              <p>
-                <label htmlFor="contact-message">
-                  Your Message{" "}
-                  <textarea
-                    name="message"
-                    id="contact-message"
-                    required
-                    onChange={this.onInputChange}
-                  />
-                </label>
-              </p>
-              <p>
-                <Button>Contact!</Button>
-                <Link to="/" style={{ float: "right" }}>
-                  Back
-                </Link>
-              </p>
-              <p />
-              <input
-                type="hidden"
-                name="form-name"
-                action="/success"
-                value="contact-form"
-              />
-            </form>
-          </Content>
-        </Wrapper>
-      </Layout>
-    );
+    return <div />;
   }
 }
 
